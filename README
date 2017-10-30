@@ -1,6 +1,10 @@
+# Install
 To get R jsonlite package to install I had to do https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=111375 and uncomment CONF_SWAPFILE=/var/swap
 
 Then I ran
 sudo Rscript -e "install.packages('jsonlite', repos='http://cran.us.r-project.org')"
 
-This could probably be run from the install script though 
+This could probably be run from the install script though
+
+# Example pipe
+/home/pi/opk/campbell/pull | Rscript /home/pi/opk/campbell/clean.R | /home/pi/opk/farmos-cli-0.2.0/push --public_key [public_key] --private_key [private_key] --url [url]
