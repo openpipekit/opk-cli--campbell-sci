@@ -1,8 +1,21 @@
 #!/usr/bin/python
 
 import requests
+import argparse
 
-url = "http://192.168.0.102/?command=dataquery&uri=dl:SOIL_MET&format=json&mode=most-recent&p1"
+parser = argparse.ArgumentParser()
+parser.add_argument("-u","--url", help="Specify the IP address or domain for the logger.")
+parser.add_argument("-t","--table", help="Choose the data table to pipe.")
+parser.add_argument("-f","--format", default="json", help="Retrun data as json or html.")
+parser.add_argument("-m","--mode", default="most-recent", help="What results to return. Options are: most-recent, TODO")
+parser.add_argument("-p","--pages", default="1", help="How many results to return.")
+args = parser.parse_args()
 
-response = requests.get(url) # bring the above url in to play
-print response.content # return json
+url = args.url + "/?command=dataquery&uri=dl:" + args.table  + "&format=" + args.format + "&mode=" + args.mode + "&p" + args.pages
+print url
+
+# response = requests.get(url) # bring the above url in to play
+# print response.content # return json
+
+# import json
+# import time
