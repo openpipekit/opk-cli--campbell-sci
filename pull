@@ -1,13 +1,8 @@
 #!/usr/bin/python
 
-# Run on Windows with C:\Python27\python.exe Desktop/cr1000.py
-
 import requests
-import time
 
 url = "http://192.168.0.102/?command=dataquery&uri=dl:SOIL_MET&format=json&mode=most-recent&p1"
 
-logger_data = [] # creat a variable to store data 
 response = requests.get(url) # bring the above url in to play
-html = response.content # returns html version of the page you just requested
-print html
+print response.content # return json
